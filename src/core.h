@@ -19,7 +19,7 @@ struct vect2d
 
 class timer{
     private:
-        static uint timeElp;
+        uint timeElp;
         uint frmTm;
         uint litTm;
         uint getDelta(uint& base);
