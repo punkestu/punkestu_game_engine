@@ -18,8 +18,8 @@ namespace sprEnt{
     };
 
     struct anim{
-        uint fps; uint nframe;
-        uint frame;
+        uint fps; int nframe;
+        int frame;
         SDL_Rect start;
     };
 

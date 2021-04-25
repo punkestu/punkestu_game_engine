@@ -18,9 +18,13 @@ int main(int argc, char* argv[]){
     sMan.get("test").texture = {"test",{0,0,128/8,32}};
     sMan.get("test").position = {100,100};
     sMan.get("test").scale = {2,2};
+    sprEnt::anim anim1;
+    anim1.fps = 1;
+    anim1.nframe = 8;
+    anim1.start = {0,0,128/8,32};
+    anim1.frame = 0;
     manager.create(renderer, "test", "./src/test.png");
-    SDL_Rect src, dst;
-    src = {0,0,128/8,32};
+    SDL_Rect dst;
     dst = {sMan.get("test").position.x,sMan.get("test").position.y,
         sMan.get("test").texture.source.w*sMan.get("test").scale.x,
         sMan.get("test").texture.source.h*sMan.get("test").scale.y};
@@ -29,6 +33,7 @@ int main(int argc, char* argv[]){
         if(e.type == SDL_QUIT){
             break;
         }
+        sprEnt::animate(sMan.get("test")._timer.frmLim(anim1.fps),sMan.get("test").texture,anim1);
         SDL_SetRenderDrawColor(renderer, 0,0,0,255);
         SDL_RenderClear(renderer);
         SDL_RenderCopy(renderer, manager.get("test"), &sMan.get("test").texture.source, &dst);
