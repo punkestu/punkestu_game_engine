@@ -4,18 +4,19 @@
 #include "core.h"
 
 typedef std::map<std::string, SDL_Texture*> texMap;
+//texture manager
 class textureM{
     private:
-        texMap _textures;
+        texMap _textures;//texture container
     public:
-        void reg(std::string id, SDL_Texture* texture);
-        void create(SDL_Renderer* renderer, std::string id, std::string path);
+        void reg(std::string id, SDL_Texture* texture);//register created texture
+        void create(SDL_Renderer* renderer, std::string id, std::string path);//create new texture in the container
         
-        texMap& getAll();
-        SDL_Texture* get(std::string id);
+        texMap& getAll();//get all texture from container
+        SDL_Texture* get(std::string id);//get specific texture
         
-        void del(std::string);
-        void clear();
+        void del(std::string);//delete texture
+        void clear();//clear texture in the container
 };
 
 #endif

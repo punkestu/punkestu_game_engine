@@ -2,7 +2,7 @@
 
 void textureM::reg(std::string id, SDL_Texture* texture){
     if(texture != NULL){
-        if(_textures.find(id) == _textures.end()){
+        if(_textures.find(id) == _textures.end()){//check is the id is available
             _textures[id] = texture;
         }else{
             warning("texture", "id has been used");
@@ -13,7 +13,7 @@ void textureM::reg(std::string id, SDL_Texture* texture){
 }
 
 void textureM::create(SDL_Renderer* renderer, std::string id, std::string path){
-    if(_textures.find(id) == _textures.end()){
+    if(_textures.find(id) == _textures.end()){//check is the id is available
         SDL_Surface* surf = IMG_Load(path.c_str());
         if(surf != NULL){
             SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
@@ -36,7 +36,7 @@ texMap& textureM::getAll(){
 }
 
 SDL_Texture* textureM::get(std::string id){
-    if(_textures.find(id) != _textures.end()){
+    if(_textures.find(id) != _textures.end()){//check is the texture is there
         return _textures[id];
     }else{
         warning("texture", "texture not found");
@@ -45,7 +45,7 @@ SDL_Texture* textureM::get(std::string id){
 }
 
 void textureM::del(std::string id){
-    if(_textures.find(id) != _textures.end()){
+    if(_textures.find(id) != _textures.end()){//check is the texture is there
         SDL_DestroyTexture(_textures[id]);
         _textures.erase(id);
     }else{
@@ -54,7 +54,7 @@ void textureM::del(std::string id){
 }
 
 void textureM::clear(){
-    for(texMap::iterator it = _textures.begin(); it != _textures.end(); it++){
+    for(texMap::iterator it = _textures.begin(); it != _textures.end(); it++){//delete all texture before clear the container
         SDL_DestroyTexture(it->second);
     }
     _textures.clear();

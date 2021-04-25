@@ -3,7 +3,7 @@
 using namespace sprEnt;
 
 void spriteM::reg(std::string id, sprite& spr){
-    if(_sprites.find(id) == _sprites.end()){
+    if(_sprites.find(id) == _sprites.end()){//check is the id available
         _sprites[id] = spr;
     }else{
         warning("sprite", "id has been used");
@@ -11,8 +11,9 @@ void spriteM::reg(std::string id, sprite& spr){
 }
 
 void spriteM::create(std::string id){
-    if(_sprites.find(id) == _sprites.end()){
+    if(_sprites.find(id) == _sprites.end()){//check is the id available
         sprite temp;
+        //set default value
         temp.texture.texture = "-";
         temp.texture.source = {0,0,0,0};
         temp.scale = {1,1};
@@ -26,7 +27,7 @@ void spriteM::create(std::string id){
 }
 
 sprite& spriteM::get(std::string id){
-    if(_sprites.find(id) != _sprites.end()){
+    if(_sprites.find(id) != _sprites.end()){//check is the sprite is there
         return _sprites[id];
     }else{
         warning("sprite", "sprite not found");
