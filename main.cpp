@@ -17,9 +17,9 @@ int main(int argc, char* argv[]){
     sMan.create("test");
     sMan.get("test").texture = {"test",{0,0,128/8,32}};
     sMan.get("test").position = {100,100};
-    sMan.get("test").scale = {2,2};
+    sMan.get("test").scale = {4,4};
     sprEnt::anim anim1;
-    anim1.fps = 1;
+    anim1.fps = 6;
     anim1.nframe = 8;
     anim1.start = {0,0,128/8,32};
     anim1.frame = 0;

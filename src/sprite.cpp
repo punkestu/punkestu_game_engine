@@ -57,13 +57,12 @@ void spriteM::clear(){
 void sprEnt::animate(bool frmLim, renTex& object, anim& animProp){
     object.source = {animProp.start.x+animProp.frame*animProp.start.w,
                     animProp.start.y,animProp.start.w,animProp.start.h};
-    if(animProp.frame>animProp.nframe){
+    if(animProp.frame>=animProp.nframe){
         animProp.frame = 0;
     }else{
         if(frmLim){
             animProp.frame++;
         }
     }
-    SDL_Log("frame: %d", animProp.frame);
 
 }
