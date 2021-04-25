@@ -17,6 +17,7 @@ void textureM::create(SDL_Renderer* renderer, std::string id, std::string path){
         SDL_Surface* surf = IMG_Load(path.c_str());
         if(surf != NULL){
             SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, surf);
+            SDL_FreeSurface(surf);
             if(tex != NULL){
                 _textures[id] = tex;
             }else{
