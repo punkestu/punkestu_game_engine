@@ -16,9 +16,9 @@ struct sprite{
 };
 
 typedef std::map<std::string, sprite> sprMap;
-sprite NULLSPR = {{"-",{0,0,0,0}},{0,0},{1,1},{0,0,0,0}};
 class spriteM{
     private:
+        const static sprite NULLSPR = {{"-",{0,0,0,0}},{0,0},{1,1},{0,0,0,0}};
         sprMap _sprites;
     public:
         void reg(std::string id, sprite& spr);
