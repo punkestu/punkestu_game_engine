@@ -17,5 +17,19 @@ struct vect2d
     int x,y;
 };
 
+class timer{
+    private:
+        static uint timeElp;
+        uint frmTm;
+        uint litTm;
+        uint getDelta(uint& base);
+        void reset(uint& base);
+    public:
+        void init();
+        void restart();
+        bool frmLim(uint fps);
+        bool timLim(uint tm);
+        uint getTimeElp();
+};
 
 #endif
