@@ -28,6 +28,7 @@ void timer::restart(){
 
 bool timer::frmLim(uint fps){
     if(getDelta(frmTm) > 1000/fps){
+        reset(frmTm);
         return true;
     }else{
         return false;
@@ -36,6 +37,7 @@ bool timer::frmLim(uint fps){
 
 bool timer::timLim(uint tm){
     if(getDelta(litTm) > tm){
+        reset(litTm);
         return true;
     }else{
         return false;
