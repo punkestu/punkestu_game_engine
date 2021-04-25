@@ -12,4 +12,10 @@
 void warning(std::string reason, std::string warn);
 void error(std::string reason, std::string err);
 
+struct vect2d
+{
+    int x,y;
+};
+
+
 #endif
