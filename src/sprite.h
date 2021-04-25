@@ -16,6 +16,7 @@ struct sprite{
 };
 
 typedef std::map<std::string, sprite> sprMap;
+sprite NULLSPR = {{"-",{0,0,0,0}},{0,0},{1,1},{0,0,0,0}};
 class spriteM{
     private:
         sprMap _sprites;

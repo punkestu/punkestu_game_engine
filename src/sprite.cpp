@@ -27,7 +27,7 @@ sprite& spriteM::get(std::string id){
         return _sprites[id];
     }else{
         warning("sprite", "sprite not found");
-        return;
+        return NULLSPR;
     }
 }
 

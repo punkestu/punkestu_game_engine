@@ -1,0 +1,172 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "core",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I/usr/include/SDL2",
+                "-D_REENTRANT",
+                "-Wall",
+                "-g",
+                "-Iinclude",
+                "-c",
+                "./src/core.cpp",
+                "-o",
+                "./obj/debug/core.o"
+            ]
+        },
+        {
+            "label": "tex",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I/usr/include/SDL2",
+                "-D_REENTRANT",
+                "-Wall",
+                "-g",
+                "-Iinclude",
+                "-c",
+                "./src/texture.cpp",
+                "-o",
+                "./obj/debug/tex.o"
+            ]
+        },
+        // {
+        //     "label": "map",
+        //     "type": "shell",
+        //     "command": "g++",
+        //     "args": [
+        //         "-I/usr/include/SDL2",
+        //         "-D_REENTRANT",
+        //         "-Wall",
+        //         "-g",
+        //         "-Iinclude",
+        //         "-c",
+        //         "./src/aria_map.cpp",
+        //         "-o",
+        //         "./obj/debug/map.o"
+        //     ]
+        // },
+        {
+            "label": "spr",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I/usr/include/SDL2",
+                "-D_REENTRANT",
+                "-Wall",
+                "-g",
+                "-Iinclude",
+                "-c",
+                "./src/sprite.cpp",
+                "-o",
+                "./obj/debug/spr.o"
+            ]
+        },
+        // {
+        //     "label": "text",
+        //     "type": "shell",
+        //     "command": "g++",
+        //     "args": [
+        //         "-I/usr/include/SDL2",
+        //         "-D_REENTRANT",
+        //         "-Wall",
+        //         "-g",
+        //         "-Iinclude",
+        //         "-c",
+        //         "./src/aria_text.cpp",
+        //         "-o",
+        //         "./obj/debug/text.o"
+        //     ]
+        // },
+        // {
+        //     "label": "audio",
+        //     "type": "shell",
+        //     "command": "g++",
+        //     "args": [
+        //         "-I/usr/include/SDL2",
+        //         "-D_REENTRANT",
+        //         "-Wall",
+        //         "-g",
+        //         "-Iinclude",
+        //         "-c",
+        //         "./src/aria_audio.cpp",
+        //         "-o",
+        //         "./obj/debug/audio.o"
+        //     ]
+        // },
+        {
+            "label": "main",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-I/usr/include/SDL2",
+                "-D_REENTRANT",
+                "-Wall",
+                "-g",
+                "-Iinclude",
+                "-c",
+                "./main.cpp",
+                "-o",
+                "./obj/debug/main.o"
+            ]
+        },
+        // {
+        //     "label": "copy",
+        //     "type": "shell",
+        //     "command": "cp",
+        //     "args": [
+        //         "./src/assets/*",
+        //         "./bin/debug/assets"
+        //     ]
+        // },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "./obj/debug/*.o",
+                "-lSDL2",
+                "-lSDL2_image",
+                // "-lSDL2_ttf",
+                // "-lSDL2_mixer",
+                "-o",
+                "./app"
+            ]
+        },
+        // {
+        //     "label": "erase",
+        //     "type": "shell",
+        //     "command": "rm",
+        //     "args": [
+        //         "./obj/debug/*.o"
+        //     ]
+        // },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "./app",
+            "dependsOrder": "sequence",
+            "dependsOn":[
+                "core",
+                "tex",
+                // "map",
+                "spr",
+                // "text",
+                // "audio",
+                "main",
+                "build"
+                // "copy",
+                // "erase"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
