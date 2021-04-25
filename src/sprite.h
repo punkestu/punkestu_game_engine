@@ -3,28 +3,37 @@
 
 #include "texture.h"
 
-struct renTex{//texture for rendering
-    std::string texture;
-    SDL_Rect source;
+namespace sprEnt{
+    struct renTex{//texture for rendering
+        std::string texture;
+        SDL_Rect source;
+    };
+
+    struct sprite{
+        renTex texture;
+        vect2d position;
+        vect2d scale;
+        SDL_Color color;
+    };
+
+    struct anim{
+        uint fps; uint frame; uint nframe;
+        SDL_Rect start;
+    };
+
+    void animate(renTex& object, anim& animProp);
 };
 
-struct sprite{
-    renTex texture;
-    vect2d position;
-    vect2d scale;
-    SDL_Color color;
-};
-
-typedef std::map<std::string, sprite> sprMap;
+typedef std::map<std::string, sprEnt::sprite> sprMap;
 class spriteM{
     private:
-        sprite NULLSPR;
+        sprEnt::sprite NULLSPR;
         sprMap _sprites;
     public:
-        void reg(std::string id, sprite& spr);
+        void reg(std::string id, sprEnt::sprite& spr);
         void create(std::string id);
 
-        sprite& get(std::string id);
+        sprEnt::sprite& get(std::string id);
         sprMap& getAll();
 
         void del(std::string id);
