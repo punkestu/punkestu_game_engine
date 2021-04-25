@@ -20,11 +20,11 @@ class spriteM{
     private:
         sprMap _sprites;
     public:
-        void reg(std::string id, sprite* spr);
+        void reg(std::string id, sprite& spr);
         void create(std::string id);
 
-        sprite get(std::string id);
-        sprMap getAll();
+        sprite& get(std::string id);
+        sprMap& getAll();
 
         void del(std::string id);
         void clear();
