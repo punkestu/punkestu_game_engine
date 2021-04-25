@@ -5,10 +5,10 @@ void textureM::reg(std::string id, SDL_Texture* texture){
         if(_textures.find(id) == _textures.end()){
             _textures[id] = texture;
         }else{
-            printf("warning[texture]: id has been used");
+            warning("texture", "id has been used");
         }
     }else{
-        printf("warning[texture]: texture not valid");
+        warning("texture", "texture not valid");
     }
 }
 
@@ -20,13 +20,13 @@ void textureM::create(SDL_Renderer* renderer, std::string id, std::string path){
             if(tex != NULL){
                 _textures[id] = tex;
             }else{
-                printf("warning[texture]: texture not valid");
+                warning("texture", "texture not valid");
             }
         }else{
-            printf("warning[texture]: path not valid");
+            warning("texture", "path not valid");
         }
     }else{
-        printf("warning[texture]: id has been used");
+        warning("texture", "id has been used");
     }
 }
 
@@ -38,7 +38,7 @@ SDL_Texture* textureM::get(std::string id){
     if(_textures.find(id) != _textures.end()){
         return _textures[id];
     }else{
-        printf("warning[texture]: texture not found");
+        warning("texture", "texture not found");
         return NULL;
     }
 }
@@ -48,7 +48,7 @@ void textureM::del(std::string id){
         SDL_DestroyTexture(_textures[id]);
         _textures.erase(id);
     }else{
-        printf("warning[texture]: texture not found");
+        warning("texture", "texture not found");
     }
 }
 
