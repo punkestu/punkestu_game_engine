@@ -18,6 +18,7 @@ void spriteM::create(std::string id){
         temp.scale = {1,1};
         temp.position = {0,0};
         temp.color = {0,0,0,0};
+        temp._timer.init();
         _sprites[id] = temp;
     }else{
         warning("sprite", "id has been used");
@@ -29,7 +30,10 @@ sprite& spriteM::get(std::string id){
         return _sprites[id];
     }else{
         warning("sprite", "sprite not found");
-        NULLSPR = {{"-",{0,0,0,0}},{0,0},{1,1},{0,0,0,0}};
+        NULLSPR.texture = {"-",{0,0,0,0}};
+        NULLSPR.position = {0,0};
+        NULLSPR.scale = {1,1};
+        NULLSPR.color = {0,0,0,0};
         return NULLSPR;
     }
 }
@@ -50,12 +54,14 @@ void spriteM::clear(){
     _sprites.clear();
 }
 
-void animate(renTex& object, anim& animProp){
+void animate(bool frmLim, renTex& object, anim& animProp){
     object.source = {animProp.start.x,animProp.start.y,animProp.start.w,animProp.start.h};
     if(animProp.frame>animProp.nframe){
         animProp.frame = 0;
     }else{
-        animProp.frame++;
+        if(frmLim){
+            animProp.frame++;
+        }
     }
 
 }

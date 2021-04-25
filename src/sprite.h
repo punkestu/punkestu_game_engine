@@ -13,15 +13,17 @@ namespace sprEnt{
         renTex texture;
         vect2d position;
         vect2d scale;
+        timer _timer;
         SDL_Color color;
     };
 
     struct anim{
-        uint fps; uint frame; uint nframe;
+        uint fps; uint nframe;
+        uint frame;
         SDL_Rect start;
     };
 
-    void animate(renTex& object, anim& animProp);
+    void animate(bool frmLim, renTex& object, anim& animProp);
 };
 
 typedef std::map<std::string, sprEnt::sprite> sprMap;
